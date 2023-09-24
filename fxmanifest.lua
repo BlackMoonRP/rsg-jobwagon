@@ -6,7 +6,7 @@ author 'RexShack#3041'
 description 'rsg-jobwagon'
 
 shared_scripts {
-	'@ox_lib/init.lua',
+    '@ox_lib/init.lua',
     '@rsg-core/shared/locale.lua',
     'locales/en.lua', -- Change this to your preferred language
     'config.lua'
