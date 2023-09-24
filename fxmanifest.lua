@@ -5,6 +5,13 @@ game 'rdr3'
 author 'RexShack#3041'
 description 'rsg-jobwagon'
 
+shared_scripts {
+	'@ox_lib/init.lua',
+    '@rsg-core/shared/locale.lua',
+    'locales/en.lua', -- Change this to your preferred language
+    'config.lua'
+}
+
 client_scripts {
     'client/client.lua'
 }
@@ -12,12 +19,6 @@ client_scripts {
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'server/server.lua'
-}
-
-shared_scripts {
-    '@rsg-core/shared/locale.lua',
-    'locales/en.lua', -- Change this to your preferred language
-    'config.lua'
 }
 
 dependency 'rsg-core'

@@ -1,5 +1,7 @@
 Config = {}
 
+Config.CartInvKeybind = 'O' -- opens cart inventory
+
 -- job settings
 Config.JobsSettings = {
 

@@ -47,51 +47,37 @@ end)
 
 -----------------------------------------------------------------------------------
 
--- job wagon menu
 RegisterNetEvent('rsg-jobwagon:client:openWagonMenu', function()
-    exports['rsg-menu']:openMenu({
-        {
-            header = Lang:t('menu.wagon_menu'),
-            isMenuHeader = true,
-        },
-        {
-            header = Lang:t('menu.wagon_setup'),
-            txt = "",
-            icon = "fas fa-box",
-            params = {
-                event = 'rsg-jobwagon:server:SetupWagon',
-                isServer = true,
-                args = {},
-            }
-        },
-        {
-            header = Lang:t('menu.wagon_get'),
-            txt = "",
-            icon = "fas fa-box",
-            params = {
-                event = 'rsg-jobwagon:client:SpawnWagon',
-                isServer = false,
-                args = {},
-            }
-        },
-        {
-            header = Lang:t('menu.wagon_store'),
-            txt = "",
-            icon = "fas fa-box",
-            params = {
-                event = 'rsg-jobwagon:client:storewagon',
-                isServer = false,
-                args = {},
-            }
-        },
-        {
-            header = Lang:t('menu.close_menu'),
-            txt = '',
-            params = {
-                event = 'rsg-menu:closeMenu',
-            }
-        },
-    })
+	lib.registerContext({
+		id = 'jobwagon_menu',
+		title = Lang:t('menu.wagon_menu'),
+		options = {
+			{
+				title = Lang:t('menu.wagon_setup'),
+				description = '',
+				icon = 'fas fa-box',
+				serverEvent = 'rsg-jobwagon:server:SetupWagon',
+				arrow = true
+			},
+			{
+				title = Lang:t('menu.wagon_get'),
+				description = '',
+				icon = 'fa-solid fa-circle-arrow-up',
+				iconColor = 'green',
+				event = 'rsg-jobwagon:client:SpawnWagon',
+				arrow = true
+			},
+			{
+				title = Lang:t('menu.wagon_store'),
+				description = '',
+				icon = 'fa-solid fa-circle-arrow-down',
+				iconColor = 'red',
+				event = 'rsg-jobwagon:client:storewagon',
+				arrow = true
+			},
+		}
+	})
+	lib.showContext("jobwagon_menu")
 end)
 
 -- spawn company wagon
@@ -102,6 +88,10 @@ RegisterNetEvent('rsg-jobwagon:client:SpawnWagon', function()
                 local ped = PlayerPedId()
                 local playerjob = RSGCore.Functions.GetPlayerData().job.name
                 local plate = data.plate
+                local carthash = Config.JobsSettings[playerjob].carthash
+                local spawncoords = Config.JobsSettings[playerjob].spawncoords
+                local cargohash = Config.JobsSettings[playerjob].cargohash
+                local lightupgardehash = Config.JobsSettings[playerjob].lightupgardehash
                 RequestModel(carthash)
                 while not HasModelLoaded(carthash) do
                     Citizen.Wait(0)
@@ -129,7 +119,7 @@ end)
 CreateThread(function()
     while true do
         Wait(1)
-        if Citizen.InvokeNative(0x91AEF906BCA88877, 0, RSGCore.Shared.Keybinds['B']) then -- IsDisabledControlJustPressed
+        if Citizen.InvokeNative(0x91AEF906BCA88877, 0, RSGCore.Shared.Keybinds[Config.CartInvKeybind]) then
             local playercoords = GetEntityCoords(PlayerPedId())
             local wagoncoords = GetEntityCoords(SpawnedWagon)
             if #(playercoords - wagoncoords) <= 2.0 then
