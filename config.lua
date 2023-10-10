@@ -6,19 +6,28 @@ Config.CartInvKeybind = 'O' -- opens cart inventory
 Config.JobsSettings = {
 
     ['stdeniswholesale'] = {
-        carthash = GetHashKey('wagon04x'),
+        carthash = joaat('wagon04x'),
         spawncoords = vector4(2333.1894, -1479.587, 45.956836, 148.38502),
-        cargohash = GetHashKey('pg_teamster_wagon04x_gen'),
-        lightupgardehash = GetHashKey('pg_teamster_wagon04x_lightupgrade3'),
+        cargohash = joaat('pg_teamster_wagon04x_gen'),
+        lightupgardehash = joaat('pg_teamster_wagon04x_lightupgrade3'),
         maxweight = 500000,
         maxslots = 40,
     },
-    
+
     ['blkwholesale'] = {
-        carthash = GetHashKey('wagon04x'),
+        carthash = joaat('wagon04x'),
         spawncoords = vector4(-738.3441, -1345.372, 43.855888, 185.47911),
-        cargohash = GetHashKey('pg_teamster_wagon04x_gen'),
-        lightupgardehash = GetHashKey('pg_teamster_wagon04x_lightupgrade3'),
+        cargohash = joaat('pg_teamster_wagon04x_gen'),
+        lightupgardehash = joaat('pg_teamster_wagon04x_lightupgrade3'),
+        maxweight = 500000,
+        maxslots = 40,
+    },
+
+    ['macfarranch'] = {
+        carthash = joaat('chuckwagon000x'),
+        spawncoords = vector4(-2376.891, -2383.489, 61.529312, 185.90876),
+        cargohash = joaat('pg_vl_rancher05'),
+        lightupgardehash = joaat('pg_teamster_chuckwagon002x_lightupgrade3'),
         maxweight = 500000,
         maxslots = 40,
     },
@@ -63,4 +72,8 @@ buggy03
 buggy02
 buggy01
 --------------------------
+
+-- https://github.com/femga/rdr3_discoveries/blob/f729ba03f75a591ce5c841642dc873345242f612/vehicles/vehicle_modding/vehicle_propsets.lua
+-- https://github.com/femga/rdr3_discoveries/blob/f729ba03f75a591ce5c841642dc873345242f612/vehicles/vehicle_modding/vehicle_lantern_propsets.lua
+
 --]]
