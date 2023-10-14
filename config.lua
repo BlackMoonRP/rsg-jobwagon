@@ -32,6 +32,15 @@ Config.JobsSettings = {
         maxslots = 40,
     },
 
+    ['prongranch'] = {
+        carthash = joaat('chuckwagon000x'),
+        spawncoords = vector4(-2572.45, 362.97662, 150.49966, 86.822937),
+        cargohash = joaat('pg_vl_rancher05'),
+        lightupgardehash = joaat('pg_teamster_chuckwagon002x_lightupgrade3'),
+        maxweight = 500000,
+        maxslots = 40,
+    },
+
 }
 
 --[[ 
